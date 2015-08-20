@@ -1,0 +1,35 @@
+//define a person object
+var Person = function (firstName, lastName){
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+//define some behavior of that object
+Person.prototype.talk = function (words){
+  console.log(words)
+}
+
+//Lets define a type of person.
+//Constructor (with a new attribute)
+function President(firstName, lastName, party) {
+  Person.call(this, firstName, lastName);
+  this.party = party;
+}
+
+//Define the inheretance.
+President.prototype = Object.create(Person.prototype);
+
+//Tell Javascript how to build this new object
+President.prototype.constructor = President;
+
+//Give President some behavior
+President.prototype.raiseTaxes = function(){
+  console.log("I will not!")
+}
+
+window.onload = function() {
+  console.log('Teaching!  Learning!  Prototypes!  Yay!');
+  console.log('We have Person, Person.firstName, Person.talk(words)');
+  console.log('President, President.firstName, and President.raiseTaxes()');
+  console.log('Lets see what we can see...');
+};
